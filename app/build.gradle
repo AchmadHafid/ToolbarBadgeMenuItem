@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply from: '../shared_build.gradle'
+
+android {
+    defaultConfig {
+        applicationId "io.github.achmadhafid.sample_app"
+    }
+    buildTypes {
+        debug {
+            shrinkResources false
+            minifyEnabled false
+        }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = '1.8'
+        allWarningsAsErrors = true
+    }
+}
+
+dependencies {
+    implementation project(':library')
+
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "com.google.android.material:material:$material_version"
+}
