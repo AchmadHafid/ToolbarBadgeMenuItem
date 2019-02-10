@@ -7,20 +7,6 @@ apply from: '../shared_build.gradle'
 
 group = 'com.github.AchmadHafid'
 
-android {
-    buildTypes {
-        debug {
-            shrinkResources false
-            minifyEnabled false
-        }
-        release {
-            shrinkResources false
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
         jvmTarget = '1.8'

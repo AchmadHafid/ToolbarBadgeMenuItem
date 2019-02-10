@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     //region Properties
 
-    var badgeCount = 0
+    private var badgeCount = 0
 
     //endregion
     //region Lifecycle Callback
