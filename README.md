@@ -124,7 +124,7 @@ You can change the default color for badge background & text. Just override thes
 License
 -------
 
-    Copyright 2016 JetRadar
+    Copyright 2019 Achmad Hafid
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
