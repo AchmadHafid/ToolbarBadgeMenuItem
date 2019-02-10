@@ -103,6 +103,24 @@ private fun getBadgeCount(@IdRes id: Int): Int =
 
 
 
+Customization
+------------
+
+You can change the default color for badge background & text. Just override these 2 color resources in your colors.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    ...
+    <color name="badge_menu_item_background">[YOUR DESIRED COLOR]</color>
+    <color name="badge_menu_item_text">[YOUR DESIRED COLOR]</color>
+    ...
+
+</resources>
+```
+
+
+
 License
 -------
 
