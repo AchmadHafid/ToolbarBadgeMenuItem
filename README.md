@@ -37,7 +37,7 @@ Add the dependency
 ```groovy
 dependencies {
   ...
-  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:1.0.2'
+  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:1.1'
   ...
 }
 ```
@@ -70,10 +70,9 @@ Usage
 
 ``` kotlin
 override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-  ToolbarBadgeMenuItem.build(
-            this,
+  createToolbarBadge(
             menu,
-            // create a map of itemId & Icon resourc
+            // create a map of itemId & Icon resources
             mapOf(
                 R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
             ),
