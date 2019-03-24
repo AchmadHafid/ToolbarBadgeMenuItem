@@ -70,28 +70,15 @@ Usage
 
 ``` kotlin
 override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-  // create a map of itemId & Icon resource
-  val items = mapOf(
-    //...
-    R.id.my_item_id to R.drawable.my_item_icon
-    //...
-  )
-
-  // loop for each item entry to build badge
-  menu?.let {
-    for ((id, icon) in items) {
-      val (menuItem, layout) = ToolbarBadgeMenuItem.build(
-        context    = this,
-        menu       = menu,
-        itemId     = id,
-        icon       = icon,
-        badgeCount = getBadgeCount(id)
-      )
-      layout?.setOnClickListener {
-        onOptionsItemSelected(menuItem)
-      }
-    }
-  }
+  ToolbarBadgeMenuItem.build(
+            this,
+            menu,
+            // create a map of itemId & Icon resourc
+            mapOf(
+                R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
+            ),
+            ::getBadgeCount
+        )
 
   return true
 }
