@@ -37,24 +37,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        val items = mapOf(
-            R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
-        )
-
-        menu?.let {
-            for ((id, icon) in items) {
-                val (menuItem, layout) = ToolbarBadgeMenuItem.build(
-                    context    = this,
-                    menu       = menu,
-                    itemId     = id,
-                    icon       = icon,
-                    badgeCount = badgeCount
+        ToolbarBadgeMenuItem.build(
+            this,
+            menu,
+            listOf(
+                Triple(
+                    R.id.action_show_notification,
+                    R.drawable.ic_notifications_none_white_24dp,
+                    {badgeCount}
                 )
-                layout?.setOnClickListener {
-                    onOptionsItemSelected(menuItem)
-                }
-            }
-        }
+            )
+        )
 
         return true
     }

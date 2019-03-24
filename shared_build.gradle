@@ -9,7 +9,7 @@ def libs = [
                 "androidx.test:core:$test_core_version",
                 "androidx.test:core-ktx:$test_core_version",
                 "androidx.test:runner:$test_runner_version",
-                "androidx.test:rules:$test_runner_version",
+                "androidx.test:rules:$test_rules_version",
                 "androidx.test.espresso:espresso-core:$espresso_core_version",
                 "androidx.test.ext:junit:$test_ext_version",
                 "androidx.test.ext:junit-ktx:$test_ext_version",
@@ -33,8 +33,8 @@ android {
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 4
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     dexOptions {

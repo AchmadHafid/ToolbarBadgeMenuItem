@@ -1,51 +1,49 @@
 package io.github.achmadhafid.toolbar_badge_menu_item
 
-import android.content.Context
 import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.DrawableRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import cn.nekocode.badge.BadgeDrawable
 
-class ToolbarBadgeMenuItem {
+object ToolbarBadgeMenuItem {
 
-    companion object {
+    @JvmStatic
+    fun build(
+        activity: AppCompatActivity,
+        menu: Menu?,
+        resources: List<Triple<Int, Int, () -> Int>>
+    ) {
+        menu?.let {
+            for ((id, icon, badgeCount) in resources) {
+                val menuItem     = menu.findItem(id) ?: continue
+                val layout       = menuItem.actionView
+                val iconDrawable = layout.findViewById<ImageView>(R.id.badge_menu_item_icon) ?: continue
+                val badge        = layout.findViewById<TextView>(R.id.badge_menu_item_text) ?: continue
+                val padding      = activity.resources.getDimension(R.dimen.badge_menu_item_padding)
 
-        @Suppress("ReturnCount")
-        @JvmStatic
-        fun build(
-            context: Context,
-            menu: Menu,
-            itemId: Int,
-            @DrawableRes icon: Int,
-            badgeCount: Int
-        ): Pair<MenuItem?, View?> {
-            val menuItem     = menu.findItem(itemId) ?: return null to null
-            val layout       = menuItem.actionView
-            val iconDrawable = layout.findViewById<ImageView>(R.id.badge_menu_item_icon) ?: return null to null
-            val badge        = layout.findViewById<TextView>(R.id.badge_menu_item_text) ?: return null to null
-            val padding      = context.resources.getDimension(R.dimen.badge_menu_item_padding)
+                iconDrawable.setImageResource(icon)
 
-            iconDrawable.setImageResource(icon)
+                badgeCount().let {
+                    @Suppress("MagicNumber")
+                    if (it > 0) {
+                        badge.text = BadgeDrawable.Builder()
+                            .type(BadgeDrawable.TYPE_NUMBER)
+                            .number(it)
+                            .badgeColor(ContextCompat.getColor(activity, R.color.badge_menu_item_background))
+                            .textColor(ContextCompat.getColor(activity, R.color.badge_menu_item_text))
+                            .padding(padding, padding, padding, padding, padding)
+                            .build()
+                            .toSpannable()
+                    }
+                }
 
-            @Suppress("MagicNumber")
-            if (badgeCount > 0) {
-                badge.text = BadgeDrawable.Builder()
-                    .type(BadgeDrawable.TYPE_NUMBER)
-                    .number(badgeCount)
-                    .badgeColor(ContextCompat.getColor(context, R.color.badge_menu_item_background))
-                    .textColor(ContextCompat.getColor(context, R.color.badge_menu_item_text))
-                    .padding(padding, padding, padding, padding, padding)
-                    .build()
-                    .toSpannable()
+                layout?.setOnClickListener {
+                    activity.onOptionsItemSelected(menuItem)
+                }
             }
-
-            return menuItem to layout
         }
-
     }
 
 }
