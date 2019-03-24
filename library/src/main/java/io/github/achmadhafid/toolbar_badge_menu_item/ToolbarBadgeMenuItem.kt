@@ -13,10 +13,11 @@ object ToolbarBadgeMenuItem {
     fun build(
         activity: AppCompatActivity,
         menu: Menu?,
-        resources: List<Triple<Int, Int, () -> Int>>
+        icons: Map<Int, Int>,
+        block: (Int) -> Int
     ) {
         menu?.let {
-            for ((id, icon, badgeCount) in resources) {
+            for ((id, icon) in icons) {
                 val menuItem     = menu.findItem(id) ?: continue
                 val layout       = menuItem.actionView
                 val iconDrawable = layout.findViewById<ImageView>(R.id.badge_menu_item_icon) ?: continue
@@ -25,7 +26,7 @@ object ToolbarBadgeMenuItem {
 
                 iconDrawable.setImageResource(icon)
 
-                badgeCount().let {
+                block(id).let {
                     @Suppress("MagicNumber")
                     if (it > 0) {
                         badge.text = BadgeDrawable.Builder()

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import io.github.achmadhafid.toolbar_badge_menu_item.ToolbarBadgeMenuItem
@@ -40,17 +41,17 @@ class MainActivity : AppCompatActivity() {
         ToolbarBadgeMenuItem.build(
             this,
             menu,
-            listOf(
-                Triple(
-                    R.id.action_show_notification,
-                    R.drawable.ic_notifications_none_white_24dp,
-                    {badgeCount}
-                )
-            )
+            mapOf(
+                R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
+            ),
+            ::getBadgeCount
         )
 
         return true
     }
+
+    @Suppress("UNUSED_PARAMETER")
+    private fun getBadgeCount(@IdRes id: Int): Int = badgeCount
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
