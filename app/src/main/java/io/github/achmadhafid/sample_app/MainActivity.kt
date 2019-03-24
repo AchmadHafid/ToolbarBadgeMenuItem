@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
-import io.github.achmadhafid.toolbar_badge_menu_item.ToolbarBadgeMenuItem
+import io.github.achmadhafid.toolbar_badge_menu_item.createToolbarBadge
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,8 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        ToolbarBadgeMenuItem.build(
-            this,
+        createToolbarBadge(
             menu,
             mapOf(
                 R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
