@@ -3,29 +3,27 @@ def libs = [
                 "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
         ],
         'core'            : [
-                "androidx.appcompat:appcompat:$appcompat_version"
+                "androidx.appcompat:appcompat:$androidx_appcompat_version"
         ],
         'localUnitTest'   : [
-                "androidx.test:core:$test_core_version",
-                "androidx.test:core-ktx:$test_core_version",
-                "androidx.test:runner:$test_runner_version",
-                "androidx.test:rules:$test_rules_version",
-                "androidx.test.espresso:espresso-core:$espresso_core_version",
-                "androidx.test.ext:junit:$test_ext_version",
-                "androidx.test.ext:junit-ktx:$test_ext_version",
-                "androidx.test.ext:truth:$test_ext_version",
-                "com.google.truth:truth:$truth_version",
-                "org.robolectric:robolectric:$robolectric_version"
+                "org.hamcrest:hamcrest-library:$hamcrest_version",
+                "org.robolectric:robolectric:$robolectric_version",
+                "androidx.test:core-ktx:$androidx_test_core_version",
+                "androidx.test:runner:$androidx_test_runner_version",
+                "androidx.test:rules:$androidx_test_rules_version",
+                "androidx.test.espresso:espresso-intents:$androidx_test_espresso_version",
+                "androidx.test.ext:junit-ktx:$androidx_test_ext_junit_version",
+                "androidx.test.ext:truth:$androidx_test_ext_truth_version",
         ],
         'instrumentedTest': [
-                "androidx.test:core:$test_core_version",
-                "androidx.test:core-ktx:$test_core_version",
-                "androidx.test:runner:$test_runner_version",
-                "androidx.test:rules:$test_runner_version",
-                "androidx.test.espresso:espresso-core:$espresso_core_version",
-                "androidx.test.ext:junit:$test_ext_version",
-                "androidx.test.ext:junit-ktx:$test_ext_version"
-        ]
+                "org.hamcrest:hamcrest-library:$hamcrest_version",
+                "androidx.test:core-ktx:$androidx_test_core_version",
+                "androidx.test:runner:$androidx_test_runner_version",
+                "androidx.test:rules:$androidx_test_rules_version",
+                "androidx.test.espresso:espresso-intents:$androidx_test_espresso_version",
+                "androidx.test.ext:junit-ktx:$androidx_test_ext_junit_version",
+                "androidx.test.ext:truth:$androidx_test_ext_truth_version",
+        ],
 ]
 
 android {
@@ -33,8 +31,8 @@ android {
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
-        versionCode 4
-        versionName "1.1"
+        versionCode 5
+        versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     dexOptions {
@@ -52,11 +50,24 @@ android {
     lintOptions {
         warningsAsErrors true
     }
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/uiTest/java"
+        }
+        test {
+            java.srcDirs += "src/uiTest/java"
+        }
+    }
+    packagingOptions {
+        exclude 'README.txt'
+    }
 }
 
 dependencies {
     implementation libs.kotlin
-    implementation libs.core
+    implementation(libs.core){
+        exclude group:'com.google.guava', module:'listenablefuture'
+    }
     testImplementation libs.localUnitTest
     androidTestImplementation libs.instrumentedTest
 }

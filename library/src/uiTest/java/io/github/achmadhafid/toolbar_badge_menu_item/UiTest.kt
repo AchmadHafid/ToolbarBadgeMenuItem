@@ -1,22 +1,21 @@
 package io.github.achmadhafid.toolbar_badge_menu_item
 
 import android.app.Application
-import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.google.common.truth.Truth
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class UnitTest {
+class UiTest {
 
     @Test
-    fun `verify package name is correct`() {
+    fun verify_package_name_is_correct() {
         val packageName = "io.github.achmadhafid.toolbar_badge_menu_item.test"
-        val app         = ApplicationProvider.getApplicationContext<Application>()
+        val app         = getApplicationContext<Application>()
 
-        Truth.assertThat(packageName)
-            .isEqualTo(app.packageName)
+        assertEquals(packageName, app.packageName)
     }
 
 }

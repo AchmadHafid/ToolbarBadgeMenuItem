@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import io.github.achmadhafid.toolbar_badge_menu_item.createToolbarBadge
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     //region Properties
 
@@ -20,10 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-
         findViewById<MaterialButton>(R.id.materialButton_increaseBadge)
             .setOnClickListener {
                 badgeCount++
