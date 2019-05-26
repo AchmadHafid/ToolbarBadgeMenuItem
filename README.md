@@ -37,7 +37,7 @@ Add the dependency
 ```groovy
 dependencies {
   ...
-  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:1.2'
+  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:2.0'
   ...
 }
 ```
@@ -76,6 +76,10 @@ override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
             mapOf(
                 R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
             ),
+            // default background color, use material components theme attribute
+            R.attr.colorOnPrimary,
+            // default text color, use material components theme attribute
+            R.attr.colorPrimary,
             ::getBadgeCount
         )
 
@@ -85,24 +89,6 @@ override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
 private fun getBadgeCount(@IdRes id: Int): Int = 
   TODO("do some logic to decide how many badge to show")
 
-```
-
-
-
-Customization
-------------
-
-You can change the default color for badge background & text. Just override these 2 color resources in your colors.xml
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    ...
-    <color name="badge_menu_item_background">[YOUR DESIRED COLOR]</color>
-    <color name="badge_menu_item_text">[YOUR DESIRED COLOR]</color>
-    ...
-
-</resources>
 ```
 
 

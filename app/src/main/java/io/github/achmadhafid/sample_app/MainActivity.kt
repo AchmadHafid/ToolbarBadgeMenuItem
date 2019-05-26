@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             mapOf(
                 R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
             ),
-            ::getBadgeCount
+            count = ::getBadgeCount
         )
 
         return true

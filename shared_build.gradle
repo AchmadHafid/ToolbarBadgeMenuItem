@@ -3,7 +3,8 @@ def libs = [
                 "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
         ],
         'core'            : [
-                "androidx.appcompat:appcompat:$androidx_appcompat_version"
+                "androidx.appcompat:appcompat:$androidx_appcompat_version",
+                "com.google.android.material:material:$google_material_version"
         ],
         'localUnitTest'   : [
                 "org.hamcrest:hamcrest-library:$hamcrest_version",
@@ -31,8 +32,8 @@ android {
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
-        versionCode 5
-        versionName "1.2"
+        versionCode 6
+        versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     dexOptions {
@@ -65,9 +66,10 @@ android {
 
 dependencies {
     implementation libs.kotlin
-    implementation(libs.core){
-        exclude group:'com.google.guava', module:'listenablefuture'
-    }
+    implementation libs.core
+    configurations.implementation.exclude(
+            group:'com.google.guava', module:'listenablefuture'
+    )
     testImplementation libs.localUnitTest
     androidTestImplementation libs.instrumentedTest
 }

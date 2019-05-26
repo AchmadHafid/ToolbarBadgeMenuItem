@@ -1,8 +1,10 @@
 package io.github.achmadhafid.toolbar_badge_menu_item
 
+import android.util.TypedValue
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import cn.nekocode.badge.BadgeDrawable
@@ -10,8 +12,17 @@ import cn.nekocode.badge.BadgeDrawable
 fun AppCompatActivity.createToolbarBadge(
     menu: Menu?,
     icons: Map<Int, Int>,
-    block: (Int) -> Int
+    backgroundColorRes: Int = R.attr.colorOnPrimary,
+    textColorRes: Int = R.attr.colorPrimary,
+    count: (Int) -> Int
 ) {
+    fun resolveColor(@IdRes id: Int, typedValue: TypedValue) =
+        if (theme.resolveAttribute(id, typedValue, true)) {
+            typedValue.data
+        } else {
+            ContextCompat.getColor(this, id)
+        }
+
     menu?.let {
         for ((id, icon) in icons) {
             val menuItem     = menu.findItem(id) ?: continue
@@ -22,14 +33,14 @@ fun AppCompatActivity.createToolbarBadge(
 
             iconDrawable.setImageResource(icon)
 
-            block(id).let {
+            count(id).let {
                 @Suppress("MagicNumber")
                 if (it > 0) {
                     badge.text = BadgeDrawable.Builder()
                         .type(BadgeDrawable.TYPE_NUMBER)
                         .number(it)
-                        .badgeColor(ContextCompat.getColor(this, R.color.badge_menu_item_background))
-                        .textColor(ContextCompat.getColor(this, R.color.badge_menu_item_text))
+                        .badgeColor(resolveColor(backgroundColorRes, TypedValue()))
+                        .textColor(resolveColor(textColorRes, TypedValue()))
                         .padding(padding, padding, padding, padding, padding)
                         .build()
                         .toSpannable()
@@ -41,4 +52,5 @@ fun AppCompatActivity.createToolbarBadge(
             }
         }
     }
+
 }

@@ -32,5 +32,4 @@ dependencies {
     implementation project(':library')
 
     implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout_version"
-    implementation "com.google.android.material:material:$google_material_version"
 }
