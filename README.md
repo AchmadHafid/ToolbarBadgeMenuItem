@@ -37,7 +37,7 @@ Add the dependency
 ```groovy
 dependencies {
   ...
-  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:2.0'
+  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:2.1'
   ...
 }
 ```
@@ -80,6 +80,8 @@ override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
             R.attr.colorOnPrimary,
             // default text color, use material components theme attribute
             R.attr.colorPrimary,
+            // default icon tint color, use material components theme attribute
+            R.attr.colorOnPrimary,
             ::getBadgeCount
         )
 

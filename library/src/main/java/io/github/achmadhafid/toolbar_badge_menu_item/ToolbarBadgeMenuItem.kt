@@ -1,10 +1,12 @@
 package io.github.achmadhafid.toolbar_badge_menu_item
 
+import android.content.res.ColorStateList
 import android.util.TypedValue
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.IdRes
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import cn.nekocode.badge.BadgeDrawable
@@ -12,11 +14,12 @@ import cn.nekocode.badge.BadgeDrawable
 fun AppCompatActivity.createToolbarBadge(
     menu: Menu?,
     icons: Map<Int, Int>,
-    backgroundColorRes: Int = R.attr.colorOnPrimary,
-    textColorRes: Int = R.attr.colorPrimary,
+    @ColorRes @AttrRes backgroundColorRes: Int = R.attr.colorOnPrimary,
+    @ColorRes @AttrRes textColorRes: Int = R.attr.colorPrimary,
+    @ColorRes @AttrRes iconTintRes: Int = R.attr.colorOnPrimary,
     count: (Int) -> Int
 ) {
-    fun resolveColor(@IdRes id: Int, typedValue: TypedValue) =
+    fun resolveColor(@ColorRes @AttrRes id: Int, typedValue: TypedValue) =
         if (theme.resolveAttribute(id, typedValue, true)) {
             typedValue.data
         } else {
@@ -32,6 +35,7 @@ fun AppCompatActivity.createToolbarBadge(
             val padding      = resources.getDimension(R.dimen.badge_menu_item_padding)
 
             iconDrawable.setImageResource(icon)
+            iconDrawable.imageTintList = ColorStateList.valueOf(resolveColor(iconTintRes, TypedValue()))
 
             count(id).let {
                 @Suppress("MagicNumber")
