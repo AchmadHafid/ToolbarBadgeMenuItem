@@ -80,7 +80,7 @@ override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
             R.attr.colorOnPrimary,
             // default text color, use material components theme attribute
             R.attr.colorPrimary,
-            // default icon tint color, use material components theme attribute
+            // you can add icon tint color if you want
             R.attr.colorOnPrimary,
             ::getBadgeCount
         )

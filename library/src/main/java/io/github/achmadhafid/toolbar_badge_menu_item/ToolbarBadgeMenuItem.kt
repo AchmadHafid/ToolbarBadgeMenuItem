@@ -16,7 +16,7 @@ fun AppCompatActivity.createToolbarBadge(
     icons: Map<Int, Int>,
     @ColorRes @AttrRes backgroundColorRes: Int = R.attr.colorOnPrimary,
     @ColorRes @AttrRes textColorRes: Int = R.attr.colorPrimary,
-    @ColorRes @AttrRes iconTintRes: Int = R.attr.colorOnPrimary,
+    @ColorRes @AttrRes iconTintRes: Int? = null,
     count: (Int) -> Int
 ) {
     fun resolveColor(@ColorRes @AttrRes id: Int, typedValue: TypedValue) =
@@ -35,7 +35,9 @@ fun AppCompatActivity.createToolbarBadge(
             val padding      = resources.getDimension(R.dimen.badge_menu_item_padding)
 
             iconDrawable.setImageResource(icon)
-            iconDrawable.imageTintList = ColorStateList.valueOf(resolveColor(iconTintRes, TypedValue()))
+            iconTintRes?.let {
+                iconDrawable.imageTintList = ColorStateList.valueOf(resolveColor(it, TypedValue()))
+            }
 
             count(id).let {
                 @Suppress("MagicNumber")
