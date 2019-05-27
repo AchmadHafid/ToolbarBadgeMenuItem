@@ -37,7 +37,7 @@ Add the dependency
 ```groovy
 dependencies {
   ...
-  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:2.1'
+  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:2.1.1'
   ...
 }
 ```
