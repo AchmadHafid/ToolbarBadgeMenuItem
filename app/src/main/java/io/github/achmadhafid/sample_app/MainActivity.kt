@@ -8,9 +8,17 @@ import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import io.github.achmadhafid.toolbar_badge_menu_item.createToolbarBadge
+import io.github.achmadhafid.zpack.ktx.bindView
+import io.github.achmadhafid.zpack.ktx.setMaterialToolbar
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
+    //region View Binding
+
+    private val btnIncreaseBadge: MaterialButton by bindView(R.id.materialButton_increaseBadge)
+    private val btnDecreaseBadge: MaterialButton by bindView(R.id.materialButton_decreaseBadge)
+
+    //endregion
     //region Properties
 
     private var badgeCount = 0
@@ -20,26 +28,23 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSupportActionBar(findViewById(R.id.toolbar))
-        findViewById<MaterialButton>(R.id.materialButton_increaseBadge)
-            .setOnClickListener {
-                badgeCount++
-                invalidateOptionsMenu()
-            }
-        findViewById<MaterialButton>(R.id.materialButton_decreaseBadge)
-            .setOnClickListener {
-                if (badgeCount > 0)
-                    badgeCount--
-                invalidateOptionsMenu()
-            }
+        setMaterialToolbar(R.id.toolbar)
+
+        btnIncreaseBadge.setOnClickListener {
+            badgeCount++
+            invalidateOptionsMenu()
+        }
+        btnDecreaseBadge.setOnClickListener {
+            if (badgeCount > 0)
+                badgeCount--
+            invalidateOptionsMenu()
+        }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         createToolbarBadge(
             menu,
-            mapOf(
-                R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
-            ),
+            mapOf(R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp),
             count = ::getBadgeCount
         )
 

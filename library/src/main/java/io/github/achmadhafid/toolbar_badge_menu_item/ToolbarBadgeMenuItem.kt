@@ -1,15 +1,14 @@
 package io.github.achmadhafid.toolbar_badge_menu_item
 
 import android.content.res.ColorStateList
-import android.util.TypedValue
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import cn.nekocode.badge.BadgeDrawable
+import io.github.achmadhafid.zpack.ktx.resolveColor
 
 fun AppCompatActivity.createToolbarBadge(
     menu: Menu?,
@@ -19,13 +18,6 @@ fun AppCompatActivity.createToolbarBadge(
     @ColorRes @AttrRes iconTintRes: Int? = null,
     count: (Int) -> Int
 ) {
-    fun resolveColor(@ColorRes @AttrRes id: Int, typedValue: TypedValue) =
-        if (theme.resolveAttribute(id, typedValue, true)) {
-            typedValue.data
-        } else {
-            ContextCompat.getColor(this, id)
-        }
-
     menu?.let {
         for ((id, icon) in icons) {
             val menuItem     = menu.findItem(id) ?: continue
@@ -36,7 +28,7 @@ fun AppCompatActivity.createToolbarBadge(
 
             iconDrawable.setImageResource(icon)
             iconTintRes?.let {
-                iconDrawable.imageTintList = ColorStateList.valueOf(resolveColor(it, TypedValue()))
+                iconDrawable.imageTintList = ColorStateList.valueOf(resolveColor(it))
             }
 
             count(id).let {
@@ -45,8 +37,8 @@ fun AppCompatActivity.createToolbarBadge(
                     badge.text = BadgeDrawable.Builder()
                         .type(BadgeDrawable.TYPE_NUMBER)
                         .number(it)
-                        .badgeColor(resolveColor(backgroundColorRes, TypedValue()))
-                        .textColor(resolveColor(textColorRes, TypedValue()))
+                        .badgeColor(resolveColor(backgroundColorRes))
+                        .textColor(resolveColor(textColorRes))
                         .padding(padding, padding, padding, padding, padding)
                         .build()
                         .toSpannable()
@@ -58,5 +50,4 @@ fun AppCompatActivity.createToolbarBadge(
             }
         }
     }
-
 }

@@ -6,6 +6,9 @@ def libs = [
                 "androidx.appcompat:appcompat:$androidx_appcompat_version",
                 "com.google.android.material:material:$google_material_version"
         ],
+        'extra' : [
+                "com.github.AchmadHafid:Zpack:$zpack_version"
+        ],
         'localUnitTest'   : [
                 "org.hamcrest:hamcrest-library:$hamcrest_version",
                 "org.robolectric:robolectric:$robolectric_version",
@@ -32,8 +35,8 @@ android {
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
-        versionCode 8
-        versionName "2.1.1"
+        versionCode 9
+        versionName "2.1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     dexOptions {
@@ -67,6 +70,7 @@ android {
 dependencies {
     implementation libs.kotlin
     implementation libs.core
+    implementation libs.extra
     configurations.implementation.exclude(
             group:'com.google.guava', module:'listenablefuture'
     )
