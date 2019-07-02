@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="badge_menu_item_layout_height">48dp</dimen>
-    <dimen name="badge_menu_item_icon_size">24dp</dimen>
-    <dimen name="badge_menu_item_ripple_size">28dp</dimen>
-    <dimen name="badge_menu_item_padding">4dp</dimen>
-    <dimen name="badge_menu_item_text">12sp</dimen>
+    <dimen name="toolbar_badge_menu_item_layout_height">48dp</dimen>
+    <dimen name="toolbar_badge_menu_item_icon_size">24dp</dimen>
+    <dimen name="toolbar_badge_menu_item_ripple_size">28dp</dimen>
+    <dimen name="toolbar_badge_menu_item_padding">4dp</dimen>
+    <dimen name="toolbar_badge_menu_item_text">12sp</dimen>
 
 </resources>

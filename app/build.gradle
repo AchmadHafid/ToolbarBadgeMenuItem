@@ -32,4 +32,6 @@ dependencies {
     implementation project(':library')
 
     implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout_version"
+    implementation "com.github.AchmadHafid:Zpack:$zpack_version"
+    implementation "com.github.AchmadHafid:SimplePref:$simplepref_version"
 }

@@ -3,21 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="?android:attr/actionButtonStyle"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/badge_menu_item_layout_height"
+    android:layout_height="@dimen/toolbar_badge_menu_item_layout_height"
     android:layout_gravity="center"
     android:clickable="true"
     android:focusable="true">
 
     <FrameLayout
-        android:layout_width="@dimen/badge_menu_item_ripple_size"
-        android:layout_height="@dimen/badge_menu_item_ripple_size"
+        android:layout_width="@dimen/toolbar_badge_menu_item_ripple_size"
+        android:layout_height="@dimen/toolbar_badge_menu_item_ripple_size"
         android:layout_gravity="center"
         android:background="?attr/selectableItemBackgroundBorderless" />
 
     <ImageView
         android:id="@+id/badge_menu_item_icon"
-        android:layout_width="@dimen/badge_menu_item_icon_size"
-        android:layout_height="@dimen/badge_menu_item_icon_size"
+        android:layout_width="@dimen/toolbar_badge_menu_item_icon_size"
+        android:layout_height="@dimen/toolbar_badge_menu_item_icon_size"
         android:layout_gravity="center"
         tools:ignore="ContentDescription" />
 
@@ -26,6 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:textSize="@dimen/badge_menu_item_text" />
+        android:textSize="@dimen/toolbar_badge_menu_item_text" />
 
 </FrameLayout>
