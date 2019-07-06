@@ -4,21 +4,21 @@ buildscript {
 
         gradle_version_plugin_version = '0.21.0'
         android_gradle_plugin_version = '3.5.0-beta05'
-        kotlin_version                = '1.3.40'
+        kotlin_version                = '1.3.41'
         maven_version                 = '2.1'
 
         //endregion
         //region SDK
 
         min_sdk_version     = 21
-        compile_sdk_version = 28
-        target_sdk_version  = 28
+        compile_sdk_version = 29
+        target_sdk_version  = 29
 
         //endregion
         //region JetPack
 
         google_material_version            = '1.1.0-alpha07'
-        androidx_appcompat_version         = '1.1.0-beta01'
+        androidx_appcompat_version         = '1.1.0-rc01'
         androidx_constraintlayout_version  = '2.0.0-beta2'
 
         //endregion
@@ -36,8 +36,8 @@ buildscript {
         //endregion
         //region Extra Dependencies
 
-        zpack_version      = '0.2.0'
-        simplepref_version = '1.1.0'
+        zpack_version      = '0.3.0'
+        simplepref_version = '1.2.0'
         badge_version      = '2.1'
 
         //endregion

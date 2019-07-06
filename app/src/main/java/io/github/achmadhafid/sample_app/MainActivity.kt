@@ -43,17 +43,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu?) = createToolbarBadge(
+    override fun onPrepareOptionsMenu(menu: Menu) = createToolbarBadge(
         menu,
         mapOf(R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp)
     ) { badgeCount }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?) = when (item?.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_show_notification -> {
             toastShort("$badgeCount badge" + if (badgeCount > 1) "s" else "")
             true
