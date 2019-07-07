@@ -9,6 +9,8 @@ ToolbarBadgeMenuItem
 Add badge to your toolbar menu item easily by using this library
 
 ![image](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/blob/master/art/demo.gif)
+<br />
+[Download Demo App Here](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/releases/download/v2.2.1/ToolbarBadgeMenuItem.v2.2.1.apk)
 
 
 Main Features
@@ -74,7 +76,7 @@ Usage
 </menu>
 ```
 
-2. Override **```onPrepareOptionsMenu```** to build badge
+2. Override **```onPrepareOptionsMenu```** to build badges
 
 ``` kotlin
 override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -117,6 +119,17 @@ class MyApp : Application() {
 }
 
 ```
+
+
+Live Template
+-------------
+Add live template for this library to your Android Studio to get started quickly. <br />
+[Download Live Template Here](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/releases/download/v2.2.1/ToolbarBadgeMenuItem_live_templates_v2.2.1.zip)
+<br />
+Import via: `File` > `Import Setting...` <br />
+
+![image](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/blob/master/art/live_template_demo.gif)
+<br />
 
 
 __That's it! May this library ease your Android development task__
