@@ -126,7 +126,7 @@ Live Template
 Add live template for this library to your Android Studio to get started quickly. <br />
 [Download Live Template Here](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/releases/download/v2.2.1/ToolbarBadgeMenuItem_live_templates_v2.2.1.zip)
 <br />
-Import via: `File` > `Import Setting...` <br />
+Import via: `File` > `Import Settings...` <br />
 
 ![image](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/blob/master/art/live_template_demo.gif)
 <br />
