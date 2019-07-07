@@ -8,7 +8,7 @@ ToolbarBadgeMenuItem
 
 Add badge to your toolbar menu item easily by using this library
 
-![image](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/releases/download/v2.2.1/demo.gif)
+![image](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/blob/master/art/demo.gif)
 
 
 Main Features
