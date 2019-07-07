@@ -4,10 +4,18 @@ ToolbarBadgeMenuItem
 [![Release](https://jitpack.io/v/AchmadHafid/toolbar-badge-menu-item.svg)](https://jitpack.io/#AchmadHafid/toolbar-badge-menu-item)
 [![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=21)
 
-Add badge to your toolbar menu item
+**Assalamu'alaikum brothers and sisters, peace be upon you!**
 
-![image](https://github.com/AchmadHafid/toolbar-badge-menu-item/blob/master/art/demo.gif)
+Add badge to your toolbar menu item easily by using this library
 
+![image](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/releases/download/v2.2.1/demo.gif)
+
+
+Main Features
+--------
+* Create menu item badge by simply using extension function
+* Support Activity & Fragment
+* Full support for color theming (e.g. light & dark theme from Material Components)
 
 
 Compatibility
@@ -37,7 +45,7 @@ Add the dependency
 ```groovy
 dependencies {
   ...
-  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:2.1.1'
+  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:2.2.1'
   ...
 }
 ```
@@ -47,7 +55,7 @@ dependencies {
 Usage
 -----
 
-1. Set it as your toolbar menu item action layout
+1. Set your toolbar menu item action layout like below
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -70,29 +78,48 @@ Usage
 
 ``` kotlin
 override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-  createToolbarBadge(
-            menu,
-            // create a map of itemId & Icon resources
-            mapOf(
-                R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp
-            ),
-            // default background color, use material components theme attribute
-            R.attr.colorOnPrimary,
-            // default text color, use material components theme attribute
-            R.attr.colorPrimary,
-            // you can add icon tint color if you want
-            R.attr.colorOnPrimary,
-            ::getBadgeCount
+  // create a map of itemId & Icon resource
+  val icons = mapOf(R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp)
+  
+  return createToolbarBadge(
+            menu = menu,
+            icons = icons,
+            textColorRes = R.attr.colorOnPrimary,     // default value from material components theme attribute
+                                                      // can also be a plain color resource (e.g. R.color.some_color)
+            backgroundColorRes = R.attr.colorPrimary, // default value from material components theme attribute
+                                                      // can also be a plain color resource (e.g. R.color.some_color)
+            iconTintRes = R.attr.colorOnPrimary,      // default is null (no tint)
+                                                      // can also be a plain color resource (e.g. R.color.some_color)
+            count = ::getBadgeCount
         )
-
-  return true
 }
 
-private fun getBadgeCount(@IdRes id: Int): Int = 
+private fun getBadgeCount(@IdRes itemId: Int): Int = 
   TODO("do some logic to decide how many badge to show")
 
 ```
 
+3. Optionally You can change the default value for `textColorRes`, `backgroundColorRes` and `iconTintRes` by using extension function available on `Application`
+
+```kotlin
+
+class MyApp : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+
+        initToolbarBadgeMenuItem(
+            defaultTextColorRes       = R.attr.colorSurface,  // @ColorRes or @AttrRes
+            defaultBackgroundColorRes = R.attr.colorPrimary,  // @ColorRes or @AttrRes
+            defaultIconTintRes        = R.attr.colorOnSurface // @ColorRes or @AttrRes
+        )
+    }
+}
+
+```
+
+
+__That's it! May this library ease your Android development task__
 
 
 License
