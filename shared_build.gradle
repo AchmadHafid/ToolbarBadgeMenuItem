@@ -6,7 +6,7 @@ def libs = [
                 "androidx.appcompat:appcompat:$androidx_appcompat_version",
                 "com.google.android.material:material:$google_material_version"
         ],
-        'extra' : [
+        'extra'           : [
                 "com.github.AchmadHafid:Zpack:$zpack_version"
         ],
         'localUnitTest'   : [
@@ -35,8 +35,8 @@ android {
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
-        versionCode 11
-        versionName "2.2.1"
+        versionCode 12
+        versionName "3.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     dexOptions {
@@ -72,7 +72,7 @@ dependencies {
     implementation libs.core
     implementation libs.extra
     configurations.implementation.exclude(
-            group:'com.google.guava', module:'listenablefuture'
+            group: 'com.google.guava', module: 'listenablefuture'
     )
     testImplementation libs.localUnitTest
     androidTestImplementation libs.instrumentedTest

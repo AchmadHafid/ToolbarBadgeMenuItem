@@ -7,13 +7,6 @@ apply from: '../shared_build.gradle'
 
 group = 'com.github.AchmadHafid'
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions {
-        jvmTarget = '1.8'
-        allWarningsAsErrors = true
-    }
-}
-
 dependencies {
     implementation "com.github.nekocode:Badge:$badge_version"
 }
