@@ -3,8 +3,8 @@ buildscript {
         //region Plugin
 
         gradle_version_plugin_version = '0.21.0'
-        android_gradle_plugin_version = '3.5.1'
-        kotlin_version                = '1.3.50'
+        android_gradle_plugin_version = '3.5.3'
+        kotlin_version                = '1.3.61'
 
         //endregion
         //region SDK
@@ -16,27 +16,27 @@ buildscript {
         //endregion
         //region JetPack
 
-        google_material_version            = '1.1.0-beta01'
-        androidx_appcompat_version         = '1.1.0'
-        androidx_constraintlayout_version  = '2.0.0-beta2'
+        google_material_version            = '1.2.0-alpha03'
+        androidx_appcompat_version         = '1.2.0-alpha01'
+        androidx_constraintlayout_version  = '2.0.0-beta4'
 
         //endregion
         //region JetPack - Testing
 
-        robolectric_version             = '4.3'
-        hamcrest_version                = '2.2-rc1'
-        androidx_test_core_version      = '1.2.1-alpha02'
-        androidx_test_runner_version    = '1.3.0-alpha02'
-        androidx_test_rules_version     = '1.3.0-alpha02'
-        androidx_test_espresso_version  = '3.3.0-alpha02'
-        androidx_test_ext_junit_version = '1.1.2-alpha02'
-        androidx_test_ext_truth_version = '1.3.0-alpha02'
+        robolectric_version             = '4.3.1'
+        hamcrest_version                = '2.2'
+        androidx_test_core_version      = '1.3.0-alpha03'
+        androidx_test_runner_version    = '1.3.0-alpha03'
+        androidx_test_rules_version     = '1.3.0-alpha03'
+        androidx_test_espresso_version  = '3.3.0-alpha03'
+        androidx_test_ext_junit_version = '1.1.2-alpha03'
+        androidx_test_ext_truth_version = '1.3.0-alpha03'
 
         //endregion
         //region Extra Dependencies
 
-        zpack_version      = '0.7.2'
-        simplepref_version = '2.1.1'
+        zpack_version      = '0.8.0'
+        simplepref_version = 'v2.3.0'
         badge_version      = '2.1'
 
         //endregion
@@ -54,7 +54,7 @@ buildscript {
 
 plugins {
     id "com.github.dcendents.android-maven" version "2.1"
-    id "com.github.ben-manes.versions" version "0.25.0"
+    id "com.github.ben-manes.versions" version "0.27.0"
 }
 
 allprojects {
