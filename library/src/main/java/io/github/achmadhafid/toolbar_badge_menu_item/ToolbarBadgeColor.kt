@@ -1,6 +1,5 @@
 package io.github.achmadhafid.toolbar_badge_menu_item
 
-import android.app.Application
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorRes
 
@@ -16,7 +15,7 @@ internal object DefaultToolbarBadgeColor {
     var iconTintRes: Int?  = R.attr.colorOnSurface
 }
 
-fun Application.setDefaultToolbarBadgeMenuItemColor(builder: ToolbarBadgeColor.() -> Unit) {
+fun setDefaultToolbarBadgeMenuItemColor(builder: ToolbarBadgeColor.() -> Unit) {
     val color = ToolbarBadgeColor().apply(builder)
     DefaultToolbarBadgeColor.apply {
         textRes       = color.textRes
