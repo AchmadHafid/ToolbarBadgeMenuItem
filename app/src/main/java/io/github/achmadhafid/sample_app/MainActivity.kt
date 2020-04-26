@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), SimplePref {
                                                 // can also be a plain color resource (e.g. R.color.some_color)
             backgroundRes = R.attr.colorPrimary // default value from material components theme attribute
                                                 // can also be a plain color resource (e.g. R.color.some_color)
-            iconTintRes = R.attr.colorOnSurface // default is null (no tint)
-                                                // can also be a plain color resource (e.g. R.color.some_color)
+            iconTintRes = R.attr.colorOnSurface // default value from material components theme attribute
+                                                // can also be a plain color resource (e.g. R.color.some_color) or null (no tint)
         }
     }
 
