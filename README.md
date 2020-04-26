@@ -10,7 +10,7 @@ Add badge to your toolbar menu item easily by using this library
 
 ![image](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/blob/master/art/demo.gif)
 <br />
-[Download Demo App Here](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/releases/download/v3.0.0/ToolbarBadgeMenuItem.v3.0.0.apk)
+[Download Demo App Here](https://github.com/AchmadHafid/ToolbarBadgeMenuItem/releases/download/v3.2.0/ToolbarBadgeMenuItem.v3.2.0.apk)
 
 
 Main Features
@@ -47,7 +47,7 @@ Add the dependency
 ```groovy
 dependencies {
   ...
-  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:3.1.0'
+  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:3.2.0'
   ...
 }
 ```
@@ -79,27 +79,16 @@ Usage
 2. Override **```onPrepareOptionsMenu```** to build badges
 
 ``` kotlin
-override fun onPrepareOptionsMenu(menu: Menu?) = createToolbarBadge {
-    toolbarMenu = menu
-    icons = mapOf(R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp)
+override fun onPrepareOptionsMenu(menu: Menu?) = createToolbarBadge(menu) {
+    addItem(R.id.item_1, R.drawable.icon_1, totalCount1)
+    addItem(R.id.item_2, R.drawable.icon_2) { totalCount2 } // can use lambda
     withColor {
-        textRes = R.attr.colorSurface       // default value from material components theme attribute
-                                            // can also be a plain color resource (e.g. R.color.some_color)
-        backgroundRes = R.attr.colorPrimary // default value from material components theme attribute
-                                            // can also be a plain color resource (e.g. R.color.some_color)
-        iconTintRes = R.attr.colorOnSurface // default is null (no tint)
-                                            // can also be a plain color resource (e.g. R.color.some_color)
-    }
-    withCount { itemId ->
-        when (itemId) {
-            R.id.action_show_notification -> badgeCount
-            else -> 0 // no badge
-        }
+        /** can also be a plain color resource (e.g. R.color.my_color) */
+        textRes       = R.attr.colorSurface
+        backgroundRes = R.attr.colorPrimary
+        iconTintRes   = R.attr.colorOnSurface // or null (no tint)
     }
 }
-
-private fun getBadgeCount(@IdRes itemId: Int): Int =
-  TODO("do some logic to decide how many badge to show")
 
 ```
 
