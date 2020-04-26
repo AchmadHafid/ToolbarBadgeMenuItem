@@ -9,11 +9,9 @@ import androidx.fragment.app.Fragment
 import cn.nekocode.badge.BadgeDrawable
 import io.github.achmadhafid.zpack.ktx.resolveColor
 
-internal fun createToolbarBadge(
-    menu: Menu,
-    icons: Map<Int, Int>,
+internal fun Menu.createToolbarBadge(
+    items: Map<Int, Pair<Int, Int>>,
     color: ToolbarBadgeColor,
-    count: (Int) -> Int,
     activity: AppCompatActivity? = null,
     fragment: Fragment? = null
 ): Boolean {
@@ -23,29 +21,27 @@ internal fun createToolbarBadge(
     val badgeColor = context.resolveColor(color.backgroundRes)
     val tintColor  = color.iconTintRes?.let { context.resolveColor(it) }
 
-    for ((id, icon) in icons) {
-        val menuItem     = menu.findItem(id) ?: return false
+    for ((id, item) in items) {
+        val menuItem     = findItem(id) ?: return false
         val layout       = menuItem.actionView
         val iconDrawable = layout.findViewById<ImageView>(R.id.badge_menu_item_icon) ?: return false
         val badge        = layout.findViewById<TextView>(R.id.badge_menu_item_text) ?: return false
 
-        iconDrawable.setImageResource(icon)
+        iconDrawable.setImageResource(item.first)
         tintColor?.let {
-            iconDrawable.imageTintList = ColorStateList.valueOf(tintColor)
+            iconDrawable.imageTintList = ColorStateList.valueOf(it)
         }
 
-        count(id).let {
-            @Suppress("MagicNumber")
-            if (it > 0) {
-                badge.text = BadgeDrawable.Builder()
-                    .type(BadgeDrawable.TYPE_NUMBER)
-                    .number(it)
-                    .textColor(textColor)
-                    .badgeColor(badgeColor)
-                    .padding(padding, padding, padding, padding, padding)
-                    .build()
-                    .toSpannable()
-            }
+        @Suppress("MagicNumber")
+        if (item.second > 0) {
+            badge.text = BadgeDrawable.Builder()
+                .type(BadgeDrawable.TYPE_NUMBER)
+                .number(item.second)
+                .textColor(textColor)
+                .badgeColor(badgeColor)
+                .padding(padding, padding, padding, padding, padding)
+                .build()
+                .toSpannable()
         }
 
         layout?.setOnClickListener {

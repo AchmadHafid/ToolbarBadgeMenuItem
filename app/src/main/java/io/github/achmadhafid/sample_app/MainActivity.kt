@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import io.github.achmadhafid.simplepref.SimplePref
 import io.github.achmadhafid.simplepref.simplePref
+import io.github.achmadhafid.toolbar_badge_menu_item.addItem
 import io.github.achmadhafid.toolbar_badge_menu_item.createToolbarBadge
 import io.github.achmadhafid.toolbar_badge_menu_item.withColor
-import io.github.achmadhafid.toolbar_badge_menu_item.withCount
 import io.github.achmadhafid.zpack.ktx.bindView
 import io.github.achmadhafid.zpack.ktx.setMaterialToolbar
 import io.github.achmadhafid.zpack.ktx.toastShort
@@ -45,9 +45,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), SimplePref {
         }
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu) = createToolbarBadge {
-        toolbarMenu = menu
-        icons = mapOf(R.id.action_show_notification to R.drawable.ic_notifications_none_white_24dp)
+    override fun onPrepareOptionsMenu(menu: Menu) = createToolbarBadge(menu) {
+        addItem(R.id.action_show_notification, R.drawable.ic_notifications_none_white_24dp, badgeCount)
         withColor {
             textRes = R.attr.colorSurface       // default value from material components theme attribute
                                                 // can also be a plain color resource (e.g. R.color.some_color)
@@ -55,12 +54,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), SimplePref {
                                                 // can also be a plain color resource (e.g. R.color.some_color)
             iconTintRes = R.attr.colorOnSurface // default is null (no tint)
                                                 // can also be a plain color resource (e.g. R.color.some_color)
-        }
-        withCount { itemId ->
-            when (itemId) {
-                R.id.action_show_notification -> badgeCount
-                else -> 0
-            }
         }
     }
 
