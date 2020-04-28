@@ -5,7 +5,7 @@ import io.github.achmadhafid.simplepref.lifecycle.SimplePrefLifecycleOwner
 import io.github.achmadhafid.simplepref.lifecycle.SimplePrefLifecycleOwnerImpl
 import io.github.achmadhafid.simplepref.simplePref
 import io.github.achmadhafid.toolbar_badge_menu_item.setDefaultToolbarBadgeMenuItemColor
-import io.github.achmadhafid.zpack.ktx.applyTheme
+import io.github.achmadhafid.zpack.extension.applyTheme
 
 @Suppress("unused")
 class DemoApp : Application(), SimplePrefLifecycleOwner by SimplePrefLifecycleOwnerImpl() {

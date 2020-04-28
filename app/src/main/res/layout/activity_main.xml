@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/homeActivity_appBarLayout"
+        android:id="@+id/app_toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="0dp"
@@ -28,25 +28,25 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton_increaseBadge"
+        android:id="@+id/btn_increment"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_increase_badge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/materialButton_decreaseBadge"
+        app:layout_constraintStart_toEndOf="@+id/btn_decrement"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton_decreaseBadge"
+        android:id="@+id/btn_decrement"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_decrease_badge"
-        app:layout_constraintBottom_toBottomOf="@id/materialButton_increaseBadge"
-        app:layout_constraintEnd_toStartOf="@id/materialButton_increaseBadge"
+        app:layout_constraintBottom_toBottomOf="@id/btn_increment"
+        app:layout_constraintEnd_toStartOf="@id/btn_increment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/materialButton_increaseBadge" />
+        app:layout_constraintTop_toTopOf="@id/btn_increment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

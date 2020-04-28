@@ -4,23 +4,22 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.button.MaterialButton
+import io.github.achmadhafid.sample_app.databinding.ActivityMainBinding
 import io.github.achmadhafid.simplepref.SimplePref
 import io.github.achmadhafid.simplepref.simplePref
 import io.github.achmadhafid.toolbar_badge_menu_item.addItem
 import io.github.achmadhafid.toolbar_badge_menu_item.createToolbarBadge
 import io.github.achmadhafid.toolbar_badge_menu_item.withColor
-import io.github.achmadhafid.zpack.ktx.bindView
-import io.github.achmadhafid.zpack.ktx.setMaterialToolbar
-import io.github.achmadhafid.zpack.ktx.toastShort
-import io.github.achmadhafid.zpack.ktx.toggleTheme
+import io.github.achmadhafid.zpack.extension.toastShort
+import io.github.achmadhafid.zpack.extension.toggleTheme
 
-class MainActivity : AppCompatActivity(R.layout.activity_main), SimplePref {
+class MainActivity : AppCompatActivity(), SimplePref {
 
     //region View Binding
 
-    private val btnIncreaseBadge: MaterialButton by bindView(R.id.materialButton_increaseBadge)
-    private val btnDecreaseBadge: MaterialButton by bindView(R.id.materialButton_decreaseBadge)
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
 
     //endregion
     //region Properties
@@ -33,13 +32,14 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), SimplePref {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setMaterialToolbar(R.id.toolbar)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
-        btnIncreaseBadge.setOnClickListener {
+        binding.btnIncrement.setOnClickListener {
             badgeCount++
             invalidateOptionsMenu()
         }
-        btnDecreaseBadge.setOnClickListener {
+        binding.btnDecrement.setOnClickListener {
             if (badgeCount > 0) badgeCount--
             invalidateOptionsMenu()
         }

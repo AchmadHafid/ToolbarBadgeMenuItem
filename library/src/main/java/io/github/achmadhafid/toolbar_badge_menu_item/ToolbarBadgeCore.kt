@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import cn.nekocode.badge.BadgeDrawable
-import io.github.achmadhafid.zpack.ktx.resolveColor
+import io.github.achmadhafid.zpack.extension.resolveColor
 
 internal fun Menu.createToolbarBadge(
     items: Map<Int, Pair<Int, Int>>,
