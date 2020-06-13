@@ -10,6 +10,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class UiTest {
 
+    @Suppress("FunctionNaming")
     @Test
     fun verify_package_name_is_correct() {
         val packageName = "io.github.achmadhafid.toolbar_badge_menu_item.test"

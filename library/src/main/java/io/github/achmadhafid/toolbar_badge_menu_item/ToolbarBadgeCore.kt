@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import cn.nekocode.badge.BadgeDrawable
 import io.github.achmadhafid.zpack.extension.resolveColor
 
+@Suppress("ReturnCount")
 internal fun Menu.createToolbarBadge(
     items: Map<Int, Pair<Int, Int>>,
     color: ToolbarBadgeColor,

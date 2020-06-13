@@ -19,6 +19,7 @@ class UiTest {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 
+    @Suppress("FunctionNaming")
     @Test
     fun verify_MainActivity_launched() {
         onView(withId(R.id.content))

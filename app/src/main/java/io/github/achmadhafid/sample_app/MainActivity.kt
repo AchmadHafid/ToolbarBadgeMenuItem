@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity(), SimplePref {
         }
     }
 
+    @Suppress("MaxLineLength")
     override fun onPrepareOptionsMenu(menu: Menu) = createToolbarBadge(menu) {
         addItem(R.id.action_show_notification, R.drawable.ic_notifications_none_white_24dp, badgeCount)
         withColor {
