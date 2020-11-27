@@ -3,8 +3,8 @@ buildscript {
         //region Plugin
 
         gradle_version_plugin_version = '0.21.0'
-        android_gradle_plugin_version = '4.0.0'
-        kotlin_version                = '1.3.72'
+        android_gradle_plugin_version = '4.1.1'
+        kotlin_version                = '1.4.20'
 
         //endregion
         //region SDK
@@ -16,9 +16,9 @@ buildscript {
         //endregion
         //region JetPack
 
-        google_material_version            = '1.3.0-alpha01'
-        androidx_appcompat_version         = '1.3.0-alpha01'
-        androidx_constraintlayout_version  = '2.0.0-beta7'
+        google_material_version            = '1.3.0-alpha04'
+        androidx_appcompat_version         = '1.3.0-alpha02'
+        androidx_constraintlayout_version  = '2.1.0-alpha1'
 
         //endregion
         //region JetPack - Testing
@@ -35,8 +35,8 @@ buildscript {
         //endregion
         //region Extra Dependencies
 
-        zpack_version      = '1.1.1'
-        simplepref_version = '2.7.1'
+        zpack_version      = '1.2.5'
+        simplepref_version = '2.8.3'
         badge_version      = '2.1'
 
         //endregion
@@ -54,8 +54,8 @@ buildscript {
 
 plugins {
     id "com.github.dcendents.android-maven" version "2.1"
-    id "com.github.ben-manes.versions" version "0.28.0"
-    id "io.gitlab.arturbosch.detekt" version "1.10.0"
+    id "com.github.ben-manes.versions" version "0.36.0"
+    id "io.gitlab.arturbosch.detekt" version "1.15.0-RC1"
 }
 
 allprojects {
