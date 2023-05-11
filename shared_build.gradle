@@ -35,13 +35,13 @@ android {
     defaultConfig {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
-        versionCode 19
-        versionName "3.4.2"
+        versionCode 20
+        versionName "4.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    dexOptions {
-        javaMaxHeapSize "4g"
-    }
+//    dexOptions {
+//        javaMaxHeapSize "4g"
+//    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -71,9 +71,9 @@ dependencies {
     implementation libs.kotlin
     implementation libs.core
     implementation libs.extra
-    configurations.implementation.exclude(
-            group: 'com.google.guava', module: 'listenablefuture'
-    )
+//    configurations.implementation.exclude(
+//            group: 'com.google.guava', module: 'listenablefuture'
+//    )
     testImplementation libs.localUnitTest
     androidTestImplementation libs.instrumentedTest
 }

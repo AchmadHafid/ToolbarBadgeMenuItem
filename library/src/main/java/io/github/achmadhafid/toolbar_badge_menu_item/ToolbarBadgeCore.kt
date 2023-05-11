@@ -25,7 +25,7 @@ internal fun Menu.createToolbarBadge(
     for ((id, item) in items) {
         val menuItem     = findItem(id) ?: return false
         val layout       = menuItem.actionView
-        val iconDrawable = layout.findViewById<ImageView>(R.id.badge_menu_item_icon) ?: return false
+        val iconDrawable = layout?.findViewById<ImageView>(R.id.badge_menu_item_icon) ?: return false
         val badge        = layout.findViewById<TextView>(R.id.badge_menu_item_text) ?: return false
 
         iconDrawable.setImageResource(item.first)
@@ -45,8 +45,9 @@ internal fun Menu.createToolbarBadge(
                 .toSpannable()
         }
 
-        layout?.setOnClickListener {
+        layout.setOnClickListener {
             activity?.onOptionsItemSelected(menuItem)
+            @Suppress("DEPRECATION")
             fragment?.onOptionsItemSelected(menuItem)
         }
     }

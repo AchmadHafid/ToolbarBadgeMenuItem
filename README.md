@@ -23,7 +23,7 @@ Main Features
 Compatibility
 -------------
 
-This library is compatible from API 21 (Android 5.0 Lollipop) & AndroidX.
+This library is compatible from API 26 & AndroidX.
 
 
 
@@ -47,7 +47,7 @@ Add the dependency
 ```groovy
 dependencies {
   ...
-  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:3.4.2'
+  implementation 'com.github.AchmadHafid:toolbar-badge-menu-item:4.0.0'
   ...
 }
 ```

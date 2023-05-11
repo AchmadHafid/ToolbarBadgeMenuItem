@@ -1,12 +1,39 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
+//apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'com.github.dcendents.android-maven'
 
 apply from: '../shared_build.gradle'
 
 group = 'com.github.AchmadHafid'
 
+android {
+    namespace = 'io.github.achmadhafid.toolbar_badge_menu_item'
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
+}
+
 dependencies {
     implementation "com.github.nekocode:Badge:$badge_version"
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.AchmadHafid'
+            artifactId = 'toolbar-badge-menu-item'
+            version = '4.0.0'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
 }
